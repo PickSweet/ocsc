@@ -3,7 +3,7 @@
 #include "../ps.h/ps_file.h"
 
 
-const char* usage = "Usage: ./ocsc <file>";
+const char* usage = "Usage: ./ocsc <file>.ocs";
 
 int main(int argc, char **argv){
     char ***args = (char ***)(&(slice_t){argv,argc});
@@ -12,6 +12,13 @@ int main(int argc, char **argv){
         return 1;
     }
     char *file = _slice_get(args, 1);
+    char *dot = strrchr(file, '.');
+    if (dot){
+        if (strcmp(dot, ".ocs") != 0){
+            log_print(LOG_ERROR, "File must have .ocs extension\n%s\n", usage);
+            return 1;
+        }
+    }
     if (!file_exists(file)){
         log_print(LOG_ERROR, "File %s does not exist\n", file);
         return 1;
