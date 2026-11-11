@@ -1,0 +1,3 @@
+[submodule "ps.h"]
+	path = ps.h
+	url = git@github.com:PickSweet/ps.h.git
