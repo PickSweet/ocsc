@@ -1,0 +1,5 @@
+*.o
+*.old
+*.exe
+*.ocs
+*.ocs.h
